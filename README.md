@@ -17,7 +17,7 @@ https://github.com/codefellows/seattle-code-201n30/blob/main/class-06/demo/js/ap
 
 ### Lighthouse Accessibility Report Score
 
-* Provide a screenshot of your score after running a Lighthouse Accessibility report.
+![Lighthouse Accessibility Report](./img/Screenshot%202023-02-23%20at%2010.55.24%20PM.png)
 
 ### Reflections and Comments
 
