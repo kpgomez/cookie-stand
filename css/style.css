@@ -1,15 +1,32 @@
+* {
+    /* border: solid red 2px; */
+}
+
+img {
+    block-size: 150px;
+}
+
 h1 {
     font-family: 'Notable', sans-serif; 
+    color: #e07a5f;
+    font-size: 100px;
+    text-align: center;
 }
 li {
     font-family: 'Montserrat', sans-serif;
+    list-style-type: 
 }
 body {
-    background-color: #F48D79;
+    background-color: #f4f1de;
+    text-align: center;
 }
-
+nav {
+    margin: 20px 50px 20px 20px;
+    /*border: solid red 2px;*/
+}
 /*
 
+stretch goals for later
 1. custom sans-serif Google Font for use in the heading tags
 2. sans-serif web font for sales data such as Arial, Verdana, or Helvetica
 3. serif web font for text such as Georgia, Times
