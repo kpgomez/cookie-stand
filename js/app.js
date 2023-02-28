@@ -63,6 +63,9 @@ City.prototype.render = function(){
     trBody.appendChild(tdElement);
     tdElement.textContent = this.cookiesPerHour[i];
   }
+  let tdCityTotals = document.createElement('td');
+  trBody.appendChild(tdCityTotals);
+  tdCityTotals.textContent = this.sum;
 
 };
 
