@@ -1,133 +1,123 @@
-
-//branch class06-objects
+//branch class07-tables
 
 //global variables
 let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let cities = [];
 
-//taken from MDN to return random integer, inclusive range, Math.ceil rounds up and
-//Math.floor rounds down
+//taken from MDN to return random integer, inclusive range
 function estimateNumberOfCustomers(min,max){
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//global variables that grab a WINDOW into the DOM
-// let seattleList = document.getElementById('seattle');
-// let tokyoList = document.getElementById('tokyo');
-// let dubaiList = document.getElementById('dubai');
-// let parisList = document.getElementById('paris');
-// let limaList = document.getElementById('lima');
-
-
-
+//this is my constructor/class
 function City(city, minNumberOfCustomers, maxNumberOfCustomers, avgSales){
-  this.city=city;
+  this.city = city;
   this.minNumberOfCustomers = minNumberOfCustomers;
   this.maxNumberOfCustomers = maxNumberOfCustomers;
   this.avgSales = avgSales;
-  this.cookiesPerHour = [];
-  this.sum = 0;
 
   cities.push(this);
 }
 
+//this is a method within City
+City.prototype.estimateCookieSales = function(){
+  this.sum = 0;
+  this.cookiesPerHour = [];
+
+  for(let i = 0; i < hours.length; i++){
+    let cookies = Math.ceil(this.avgSales * estimateNumberOfCustomers(this.minNumberOfCustomers,this.maxNumberOfCustomers));
+    this.cookiesPerHour.push(cookies);
+    this.sum += cookies;
+
+  }
+};
+
+//WINDOW into the DOM
+let container = document.getElementById('sales-table'); //this is the parent
+
+//thead function
+let tableElement = document.createElement('table');
+let theadElement = document.createElement('thead');
+let trElement = document.createElement('tr');
+container.appendChild(tableElement);
+tableElement.appendChild(theadElement);
+theadElement.appendChild(trElement);
+for(let i = 0; i < hours.length; i++){
+  let thElement = document.createElement('th');
+  trElement.appendChild(thElement);
+  thElement.textContent = hours[i];
+}
+
+//tbody table render
+City.prototype.render = function(){
+
+
+  let tbodyElement = document.createElement('tbody');
+  tableElement.appendChild(tbodyElement);
+
+  let trBody = document.createElement('tr');
+  tbodyElement.appendChild(trBody);
+
+  for(let i = 0; i < hours.length; i++){
+    let tdElement = document.createElement('td');
+    trBody.appendChild(tdElement);
+    tdElement.textContent = this.cookiesPerHour[i];
+  }
+
+};
+
+//tfoot function
+
+// let tfootElement = document.createElement('tfoot');
+// tableElement.appendChild(tfootElement);
+// let tr3Element = document.createElement('tr');
+// tfootElement.appendChild(tr3Element);
+
+// for(let i = 0; i < this.cookiesPerHour[i].length; i++){
+//   let tdTotals = document.createElement('td');
+//   tr3Element.appendChild(tdTotals);
+//   tdTotals.textContent = 'x';
+// };
+
+
+/*<table> ideal table structure
+    <thead>
+      <tr>
+        <th>loops through the hours</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> loops through the cookies per hour for each city</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td> loops through the cookies per hour for each city and sums it up for all cities by the hour </td>
+      </tr>
+    </tfoot>
+</table> */
+
+//this is the instantiation of each object
 let seattle = new City('Seattle', 23, 65, 6.3);
 let tokyo = new City('Tokyo', 3, 24, 1.2);
 let dubai = new City('Dubai', 11, 38, 3.7);
 let paris = new City('Paris', 20, 38, 2.3);
 let lima = new City('Lima', 2, 16, 4.6);
 
-City.prototype.estimateCookieSales = function(){
-  for(let i = 0; i < hours.length; i++){
-    let cookies = Math.ceil(this.avgSales * estimateNumberOfCustomers(this.minNumberOfCustomers,this.maxNumberOfCustomers));
-    this.cookiesPerHour.push(cookies);
-    this.sum += cookies;
-  }
-};
-
+//this calls the methods
 seattle.estimateCookieSales();
 tokyo.estimateCookieSales();
 dubai.estimateCookieSales();
 paris.estimateCookieSales();
 lima.estimateCookieSales();
 
-console.log(seattle.estimateCookieSales());
-
-City.prototype.render = function(){
-//   seattleList.textContent = this.city;
-//   for(let i = 0; i < hours.length; i++){
-//     let liElement = document.createElement('li');
-//     liElement.textContent = `${hours[i]}: ${this.cookiesPerHour[i]} cookies`;
-//     seattleList.appendChild(liElement);
-//   }
-//   let total = document.createElement('li');
-//   total.textContent = `Total: ${this.sum} cookies`;
-//   seattleList.appendChild(total);
-
-  let sectElement = document.getElementById('sales-table');
-  let tableElement = document.createElement('table');
-  sectElement.appendChild(tableElement);
-
-  let hourHeader = document.createElement('tr');
-  tableElement.appendChild(hourHeader);
-  for(let i = 0; i < hours.length; i++){
-    let thElement = document.createElement('th');
-    hourHeader.appendChild(thElement);
-    thElement.textContent = hours[i];
-  }
-
-  let tr2Element = document.createElement('tr');
-  tableElement.appendChild(tr2Element);
-  for(let i = 0; i < hours.length; i++){
-    let tdElement = document.createElement('td');
-    tr2Element.appendChild(tdElement);
-    tdElement.textContent = this.cookiesPerHour[i];
-  }
-
-//   let row2 = document.createElement('tr');
-//   tableElement.appendChild(row2);
-//   for(let i = 0; i < hours.length; i++){
-//     let row2Data = document.createElement('td');
-//     row2.appendChild(row2Data);
-//     row2Data.textContent = this.cookiesPerHour[i];
-//   }
-
-};
-/* <table>
-      <tr>
-          <th>hours[i]</th>
-      <tr>
-      <tr>
-          <td>cookiesPerHour[i]</td>
-      </tr>
-  </table> */
-
+//this displays the data
 seattle.render();
 tokyo.render();
 dubai.render();
 paris.render();
 lima.render();
 
-
-
-
-//   tokyo.estimateCookieSales();
-
-
-//   dubai.estimateCookieSales();
-//   console.log(dubai.render());
-
-//   paris.estimateCookieSales();
-//   console.log(paris.render());
-//   lima.estimateCookieSales();
-//   console.log(lima.render());
-
-//create table
-
-
-// let tableData = document.createElement('td');
-// thElement.appendChild(tableData);
 
 
