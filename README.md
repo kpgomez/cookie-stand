@@ -15,6 +15,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 https://github.com/codefellows/seattle-code-201n30/blob/main/class-06/demo/lecture.md
 https://github.com/codefellows/seattle-code-201n30/blob/main/class-06/demo/js/app.js
 
+Helped explain <thead> a bit clearer
+https://www.geeksforgeeks.org/differentiate-between-th-thead-tags-in-html-table/ 
+
 ### Lighthouse Accessibility Report Score
 
 ![Lighthouse Accessibility Report](./img/Screenshot%202023-02-23%20at%2010.55.24%20PM.png)
