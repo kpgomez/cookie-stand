@@ -14,6 +14,8 @@ https://coolors.co/palettes/trending
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random 
 https://github.com/codefellows/seattle-code-201n30/blob/main/class-06/demo/lecture.md
 https://github.com/codefellows/seattle-code-201n30/blob/main/class-06/demo/js/app.js
+https://www.w3schools.com/js/js_functions.asp
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
 
 Helped explain <thead> a bit clearer
 https://www.geeksforgeeks.org/differentiate-between-th-thead-tags-in-html-table/ 
