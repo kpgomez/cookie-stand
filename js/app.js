@@ -34,72 +34,72 @@ City.prototype.estimateCookieSales = function(){
 
 //WINDOW into the DOM
 let container = document.getElementById('sales-table'); //this is the parent
-
-//thead function
 let tableElement = document.createElement('table');
-let theadElement = document.createElement('thead');
-let trElement = document.createElement('tr');
-container.appendChild(tableElement);
-tableElement.appendChild(theadElement);
-theadElement.appendChild(trElement);
-for(let i = 0; i < hours.length; i++){
-  let thElement = document.createElement('th');
-  trElement.appendChild(thElement);
-  thElement.textContent = hours[i];
+
+//thead table function
+function displayHeader(){
+  let theadElement = document.createElement('thead');
+  let trElement = document.createElement('tr');
+  container.appendChild(tableElement);
+  tableElement.appendChild(theadElement);
+  theadElement.appendChild(trElement);
+
+  for(let i = 0; i < hours.length; i++){
+    let thElement = document.createElement('th');
+    trElement.appendChild(thElement);
+    thElement.textContent = hours[i];
+  }
 }
+
+displayHeader();
+
+let tbodyElement = document.createElement('tbody'); // used to be within the render function, moving it here created a single tbody tag
+tableElement.appendChild(tbodyElement);
 
 //tbody table render
 City.prototype.render = function(){
-
-
-  let tbodyElement = document.createElement('tbody');
-  tableElement.appendChild(tbodyElement);
-
   let trBody = document.createElement('tr');
   tbodyElement.appendChild(trBody);
 
+  //loops over cookiesPerHour for each city
   for(let i = 0; i < hours.length; i++){
     let tdElement = document.createElement('td');
     trBody.appendChild(tdElement);
     tdElement.textContent = this.cookiesPerHour[i];
   }
+
+  //displays totals for each city
   let tdCityTotals = document.createElement('td');
   trBody.appendChild(tdCityTotals);
   tdCityTotals.textContent = this.sum;
-
 };
 
-//tfoot function
 
-// let tfootElement = document.createElement('tfoot');
-// tableElement.appendChild(tfootElement);
-// let tr3Element = document.createElement('tr');
-// tfootElement.appendChild(tr3Element);
+let totalsPerHour = [];
 
-// for(let i = 0; i < this.cookiesPerHour[i].length; i++){
-//   let tdTotals = document.createElement('td');
-//   tr3Element.appendChild(tdTotals);
-//   tdTotals.textContent = 'x';
-// };
+function calculateHourlyTotals(){
+  for(let i = 0; i < hours.length; i++){
+    let columnTotal = 0;
+    for(let j = 0; j < cities.length; j++){
+      columnTotal += cities[j].cookiesPerHour[i];
+    }
+    totalsPerHour.push(columnTotal); //when I had this within the above inner loop, totalsPerHour.length = hours.length * cookiesPerHour.length YIKES
+  }
+}
 
+// tfoot function displays hourly totals
+function displayFooter(){
+  let tfootElement = document.createElement('tfoot');
+  tableElement.appendChild(tfootElement);
+  let trFootElement = document.createElement('tr');
+  tfootElement.appendChild(trFootElement);
 
-/*<table> ideal table structure
-    <thead>
-      <tr>
-        <th>loops through the hours</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td> loops through the cookies per hour for each city</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td> loops through the cookies per hour for each city and sums it up for all cities by the hour </td>
-      </tr>
-    </tfoot>
-</table> */
+  for(let i = 0; i < totalsPerHour.length; i++){
+    let tdTotals = document.createElement('td');
+    trFootElement.appendChild(tdTotals);
+    tdTotals.textContent = totalsPerHour[i];
+  }
+}
 
 //this is the instantiation of each object
 let seattle = new City('Seattle', 23, 65, 6.3);
@@ -108,19 +108,25 @@ let dubai = new City('Dubai', 11, 38, 3.7);
 let paris = new City('Paris', 20, 38, 2.3);
 let lima = new City('Lima', 2, 16, 4.6);
 
+
+
 //this calls the methods
 seattle.estimateCookieSales();
-tokyo.estimateCookieSales();
-dubai.estimateCookieSales();
-paris.estimateCookieSales();
-lima.estimateCookieSales();
-
-//this displays the data
 seattle.render();
+
+
+tokyo.estimateCookieSales();
 tokyo.render();
+
+dubai.estimateCookieSales();
 dubai.render();
+
+paris.estimateCookieSales();
 paris.render();
+
+lima.estimateCookieSales();
 lima.render();
 
+calculateHourlyTotals();
 
-
+displayFooter();
