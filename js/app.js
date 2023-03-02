@@ -4,6 +4,12 @@
 let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let cities = [];
 
+//WINDOW into the DOM
+let container = document.getElementById('sales-table'); //this is the parent
+let tableElement = document.createElement('table');
+let tbodyElement = document.createElement('tbody'); // used to be within the render function, moving it outside of render created a single tbody tag
+tableElement.appendChild(tbodyElement);
+
 //taken from MDN to return random integer, inclusive range
 function estimateNumberOfCustomers(min,max){
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -32,9 +38,16 @@ City.prototype.estimateCookieSales = function(){
   }
 };
 
-//WINDOW into the DOM
-let container = document.getElementById('sales-table'); //this is the parent
-let tableElement = document.createElement('table');
+// display cities as headers
+// function displayCities(){
+//   for(let i = 0; i <cities.length; i++){
+//     let trHead = document.createElement('tr');
+//     tableElement.appendChild(trHead);
+//     let thHead = document.createElement('th');
+//     trHead.appendChild(thHead);
+//     thHead.textContent = cities[i].city;
+//   }
+// }
 
 //thead table function
 function displayHeader(){
@@ -44,22 +57,29 @@ function displayHeader(){
   tableElement.appendChild(theadElement);
   theadElement.appendChild(trElement);
 
+  let emptyCell = document.createElement('th');
+  trElement.appendChild(emptyCell);
+
   for(let i = 0; i < hours.length; i++){
     let thElement = document.createElement('th');
     trElement.appendChild(thElement);
     thElement.textContent = hours[i];
   }
+
+  //from demo
+  let thFinalCell = document.createElement('th');
+  trElement.appendChild(thFinalCell);
+  thFinalCell.textContent = 'Totals';
 }
-
-displayHeader();
-
-let tbodyElement = document.createElement('tbody'); // used to be within the render function, moving it here created a single tbody tag
-tableElement.appendChild(tbodyElement);
 
 //tbody table render
 City.prototype.render = function(){
   let trBody = document.createElement('tr');
   tbodyElement.appendChild(trBody);
+
+  let title = document.createElement('th');
+  title.textContent = this.city;
+  trBody.appendChild(title);
 
   //loops over cookiesPerHour for each city
   for(let i = 0; i < hours.length; i++){
@@ -72,8 +92,8 @@ City.prototype.render = function(){
   let tdCityTotals = document.createElement('td');
   trBody.appendChild(tdCityTotals);
   tdCityTotals.textContent = this.sum;
-};
 
+};
 
 let totalsPerHour = [];
 
@@ -94,11 +114,22 @@ function displayFooter(){
   let trFootElement = document.createElement('tr');
   tfootElement.appendChild(trFootElement);
 
+  //this displays 'Total' in footer FROM DEMO
+  let firstCell = document.createElement('td');
+  trFootElement.appendChild(firstCell);
+  firstCell.textContent = 'Totals';
+
+  let grandTotal = 0;
   for(let i = 0; i < totalsPerHour.length; i++){
+    grandTotal += totalsPerHour[i];
     let tdTotals = document.createElement('td');
     trFootElement.appendChild(tdTotals);
     tdTotals.textContent = totalsPerHour[i];
   }
+
+  let tdFinalCellTotal = document.createElement('td');
+  trFootElement.appendChild(tdFinalCellTotal);
+  tdFinalCellTotal.textContent = grandTotal;
 }
 
 //this is the instantiation of each object
@@ -109,11 +140,12 @@ let paris = new City('Paris', 20, 38, 2.3);
 let lima = new City('Lima', 2, 16, 4.6);
 
 
-
 //this calls the methods
+// displayCities();
+displayHeader();
+
 seattle.estimateCookieSales();
 seattle.render();
-
 
 tokyo.estimateCookieSales();
 tokyo.render();
@@ -128,5 +160,4 @@ lima.estimateCookieSales();
 lima.render();
 
 calculateHourlyTotals();
-
 displayFooter();
