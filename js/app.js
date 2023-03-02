@@ -115,7 +115,7 @@ function displayFooter(){
   tfootElement.appendChild(trFootElement);
 
   //this displays 'Total' in footer FROM DEMO
-  let firstCell = document.createElement('td');
+  let firstCell = document.createElement('th');
   trFootElement.appendChild(firstCell);
   firstCell.textContent = 'Totals';
 
