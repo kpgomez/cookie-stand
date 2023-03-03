@@ -61,9 +61,9 @@ function displayHeader(){
   tableHeadRow.appendChild(emptyCell);
 
   for(let i = 0; i < hours.length; i++){
-    let thElement = document.createElement('th');
-    tableHeadRow.appendChild(thElement);
-    thElement.textContent = hours[i];
+    let thHours = document.createElement('th');
+    tableHeadRow.appendChild(thHours);
+    thHours.textContent = hours[i];
   }
 
   //from demo
@@ -109,27 +109,27 @@ function calculateHourlyTotals(){
 
 // tfoot function displays hourly totals
 function displayFooter(){
-  let tfootElement = document.createElement('tfoot');
-  tableElement.appendChild(tfootElement);
-  let trFootElement = document.createElement('tr');
-  tfootElement.appendChild(trFootElement);
+  let tableFooter = document.createElement('tfoot');
+  tableElement.appendChild(tableFooter);
+  let tableRowFooter = document.createElement('tr');
+  tableFooter.appendChild(tableRowFooter);
 
   //this displays 'Total' in footer FROM DEMO
   let firstCell = document.createElement('th');
-  trFootElement.appendChild(firstCell);
+  tableRowFooter.appendChild(firstCell);
   firstCell.textContent = 'Totals';
 
   let grandTotal = 0;
   for(let i = 0; i < totalsPerHour.length; i++){
     grandTotal += totalsPerHour[i];
-    let tdTotals = document.createElement('td');
-    trFootElement.appendChild(tdTotals);
-    tdTotals.textContent = totalsPerHour[i];
+    let hourlyTotals = document.createElement('td');
+    tableRowFooter.appendChild(hourlyTotals);
+    hourlyTotals.textContent = totalsPerHour[i];
   }
 
-  let tdFinalCellTotal = document.createElement('td');
-  trFootElement.appendChild(tdFinalCellTotal);
-  tdFinalCellTotal.textContent = grandTotal;
+  let tdGrandTotal = document.createElement('td');
+  tableRowFooter.appendChild(tdGrandTotal);
+  tdGrandTotal.textContent = grandTotal;
 }
 
 //this is the instantiation of each object
@@ -139,8 +139,6 @@ let dubai = new City('Dubai', 11, 38, 3.7);
 let paris = new City('Paris', 20, 38, 2.3);
 let lima = new City('Lima', 2, 16, 4.6);
 
-
-// displayCities();
 
 //this calls the methods
 displayHeader();
@@ -162,3 +160,5 @@ lima.render();
 
 calculateHourlyTotals();
 displayFooter();
+
+// displayCities();
