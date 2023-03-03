@@ -8,23 +8,20 @@ img {
 
 h1 {
     font-family: 'Gidugu', cursive;
-    color: blue;
+    color: green;
     font-size: 100px;
     text-align: center;
 }
 
 h2{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
     font-style: italic;
-}
-li {
-    font-family: 'Montserrat', sans-serif;
-    list-style-type: none;
+    color: maroon;
 }
 
 body {
-    background-color: whitesmoke;
+    background-color: white;
     text-align: center;
 }
 nav {
@@ -32,9 +29,8 @@ nav {
     /*border: solid red 2px;*/
 }
 table th, td{
-    border: solid black 1px;
-    font-size: 15px;
-
+    border: solid maroon 1px;
+    color: maroon;
 }
 
 table{
@@ -44,12 +40,18 @@ table{
 }
 
 td {
-    padding: 8px
+    padding: 8px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+   
 }
 
 th {
     font-weight: bold;
     padding: 8px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 18px;
+   
 }
 /*
 
