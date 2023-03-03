@@ -51,47 +51,47 @@ City.prototype.estimateCookieSales = function(){
 
 //thead table function
 function displayHeader(){
-  let theadElement = document.createElement('thead');
-  let trElement = document.createElement('tr');
+  let tableHead = document.createElement('thead');
+  let tableHeadRow = document.createElement('tr');
   container.appendChild(tableElement);
-  tableElement.appendChild(theadElement);
-  theadElement.appendChild(trElement);
+  tableElement.appendChild(tableHead);
+  tableHead.appendChild(tableHeadRow);
 
   let emptyCell = document.createElement('th');
-  trElement.appendChild(emptyCell);
+  tableHeadRow.appendChild(emptyCell);
 
   for(let i = 0; i < hours.length; i++){
     let thElement = document.createElement('th');
-    trElement.appendChild(thElement);
+    tableHeadRow.appendChild(thElement);
     thElement.textContent = hours[i];
   }
 
   //from demo
-  let thFinalCell = document.createElement('th');
-  trElement.appendChild(thFinalCell);
-  thFinalCell.textContent = 'Totals';
+  let thTotalCell = document.createElement('th');
+  tableHeadRow.appendChild(thTotalCell);
+  thTotalCell.textContent = 'Totals';
 }
 
 //tbody table render
 City.prototype.render = function(){
-  let trBody = document.createElement('tr');
-  tbodyElement.appendChild(trBody);
+  let tableRow = document.createElement('tr');
+  tbodyElement.appendChild(tableRow);
 
-  let title = document.createElement('th');
-  title.textContent = this.city;
-  trBody.appendChild(title);
+  let cityName = document.createElement('th');
+  cityName.textContent = this.city;
+  tableRow.appendChild(cityName);
 
   //loops over cookiesPerHour for each city
   for(let i = 0; i < hours.length; i++){
-    let tdElement = document.createElement('td');
-    trBody.appendChild(tdElement);
-    tdElement.textContent = this.cookiesPerHour[i];
+    let cookieSales = document.createElement('td');
+    tableRow.appendChild(cookieSales);
+    cookieSales.textContent = this.cookiesPerHour[i];
   }
 
   //displays totals for each city
-  let tdCityTotals = document.createElement('td');
-  trBody.appendChild(tdCityTotals);
-  tdCityTotals.textContent = this.sum;
+  let cityTotals = document.createElement('td');
+  tableRow.appendChild(cityTotals);
+  cityTotals.textContent = this.sum;
 
 };
 
@@ -140,8 +140,9 @@ let paris = new City('Paris', 20, 38, 2.3);
 let lima = new City('Lima', 2, 16, 4.6);
 
 
-//this calls the methods
 // displayCities();
+
+//this calls the methods
 displayHeader();
 
 seattle.estimateCookieSales();
