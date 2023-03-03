@@ -1,0 +1,69 @@
+* {
+    /* border: solid red 2px; */
+}
+
+img {
+    block-size: 150px;
+}
+
+h1 {
+    font-family: 'Gidugu', cursive;
+    color: green;
+    font-size: 100px;
+    text-align: center;
+}
+
+h2{
+    font-weight: bold;
+    font-size: 30px;
+    font-style: italic;
+    color: maroon;
+}
+
+body {
+    background-color: white;
+    text-align: center;
+}
+nav {
+    margin: 20px 50px 20px 20px;
+    /*border: solid red 2px;*/
+}
+table th, td{
+    border: solid maroon 1px;
+    color: maroon;
+}
+
+table{
+    margin: 0 auto; /* top bottom left right */
+    table-layout: auto;
+    background-color: lightyellow;
+}
+
+td {
+    padding: 8px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+   
+}
+
+th {
+    font-weight: bold;
+    padding: 8px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 18px;
+   
+}
+/*
+
+stretch goals for later
+1. custom sans-serif Google Font for use in the heading tags
+2. sans-serif web font for sales data such as Arial, Verdana, or Helvetica
+3. serif web font for text such as Georgia, Times
+4. specified different font colors for all three fonts uses
+5. a background color for the default page that has good contrast and are readable
+6. different background color for the elements such as boxes and tables
+7. style: simplicity, clarity, consistency
+8. thoughtful layout and overall organization
+9. lighthouse accessibility report between 65-80 into readme.md 
+10. normal home page info; locations, hours, contact information, some text about how awesome
+the business is . think about audienc

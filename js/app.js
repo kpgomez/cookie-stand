@@ -51,47 +51,47 @@ City.prototype.estimateCookieSales = function(){
 
 //thead table function
 function displayHeader(){
-  let theadElement = document.createElement('thead');
-  let trElement = document.createElement('tr');
+  let tableHead = document.createElement('thead');
+  let tableHeadRow = document.createElement('tr');
   container.appendChild(tableElement);
-  tableElement.appendChild(theadElement);
-  theadElement.appendChild(trElement);
+  tableElement.appendChild(tableHead);
+  tableHead.appendChild(tableHeadRow);
 
   let emptyCell = document.createElement('th');
-  trElement.appendChild(emptyCell);
+  tableHeadRow.appendChild(emptyCell);
 
   for(let i = 0; i < hours.length; i++){
-    let thElement = document.createElement('th');
-    trElement.appendChild(thElement);
-    thElement.textContent = hours[i];
+    let thHours = document.createElement('th');
+    tableHeadRow.appendChild(thHours);
+    thHours.textContent = hours[i];
   }
 
   //from demo
-  let thFinalCell = document.createElement('th');
-  trElement.appendChild(thFinalCell);
-  thFinalCell.textContent = 'Totals';
+  let thTotalCell = document.createElement('th');
+  tableHeadRow.appendChild(thTotalCell);
+  thTotalCell.textContent = 'Totals';
 }
 
 //tbody table render
 City.prototype.render = function(){
-  let trBody = document.createElement('tr');
-  tbodyElement.appendChild(trBody);
+  let tableRow = document.createElement('tr');
+  tbodyElement.appendChild(tableRow);
 
-  let title = document.createElement('th');
-  title.textContent = this.city;
-  trBody.appendChild(title);
+  let cityName = document.createElement('th');
+  cityName.textContent = this.city;
+  tableRow.appendChild(cityName);
 
   //loops over cookiesPerHour for each city
   for(let i = 0; i < hours.length; i++){
-    let tdElement = document.createElement('td');
-    trBody.appendChild(tdElement);
-    tdElement.textContent = this.cookiesPerHour[i];
+    let cookieSales = document.createElement('td');
+    tableRow.appendChild(cookieSales);
+    cookieSales.textContent = this.cookiesPerHour[i];
   }
 
   //displays totals for each city
-  let tdCityTotals = document.createElement('td');
-  trBody.appendChild(tdCityTotals);
-  tdCityTotals.textContent = this.sum;
+  let cityTotals = document.createElement('td');
+  tableRow.appendChild(cityTotals);
+  cityTotals.textContent = this.sum;
 
 };
 
@@ -109,27 +109,27 @@ function calculateHourlyTotals(){
 
 // tfoot function displays hourly totals
 function displayFooter(){
-  let tfootElement = document.createElement('tfoot');
-  tableElement.appendChild(tfootElement);
-  let trFootElement = document.createElement('tr');
-  tfootElement.appendChild(trFootElement);
+  let tableFooter = document.createElement('tfoot');
+  tableElement.appendChild(tableFooter);
+  let tableRowFooter = document.createElement('tr');
+  tableFooter.appendChild(tableRowFooter);
 
   //this displays 'Total' in footer FROM DEMO
-  let firstCell = document.createElement('td');
-  trFootElement.appendChild(firstCell);
+  let firstCell = document.createElement('th');
+  tableRowFooter.appendChild(firstCell);
   firstCell.textContent = 'Totals';
 
   let grandTotal = 0;
   for(let i = 0; i < totalsPerHour.length; i++){
     grandTotal += totalsPerHour[i];
-    let tdTotals = document.createElement('td');
-    trFootElement.appendChild(tdTotals);
-    tdTotals.textContent = totalsPerHour[i];
+    let hourlyTotals = document.createElement('td');
+    tableRowFooter.appendChild(hourlyTotals);
+    hourlyTotals.textContent = totalsPerHour[i];
   }
 
-  let tdFinalCellTotal = document.createElement('td');
-  trFootElement.appendChild(tdFinalCellTotal);
-  tdFinalCellTotal.textContent = grandTotal;
+  let tdGrandTotal = document.createElement('td');
+  tableRowFooter.appendChild(tdGrandTotal);
+  tdGrandTotal.textContent = grandTotal;
 }
 
 //this is the instantiation of each object
@@ -141,7 +141,6 @@ let lima = new City('Lima', 2, 16, 4.6);
 
 
 //this calls the methods
-// displayCities();
 displayHeader();
 
 seattle.estimateCookieSales();
@@ -161,3 +160,5 @@ lima.render();
 
 calculateHourlyTotals();
 displayFooter();
+
+// displayCities();
