@@ -1,7 +1,15 @@
 * {
     /* border: solid red 2px; */
 }
+fieldset{
+    flex-direction: column;
+}
+form{
+    margin: 50px;
+    display: flex;
+    border: solid black 1px;
 
+}
 img {
     block-size: 150px;
 }
