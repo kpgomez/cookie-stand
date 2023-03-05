@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/sales.css" /> 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,6 +40,24 @@
             </tr>
         </tfoot> -->
     </table>
+    <form id="add-new-location"> <!--this is the form container-->
+        <fieldset>
+            <label for="city-name">City Name</label>
+            <input type="text" id="city-name" name="cityName">
+
+            <legend>Statistics</legend>
+            <label for="city-min">Minimum # of Customers</label>
+            <input type="number" id="city-min" name="cityMin">
+
+            <label for="city-max">Maximum # of Customers</label>
+            <input type="number" id="city-max" name="cityMax">
+
+            <label for="city-avg">Average # of Cookies per Customer</label>
+            <input type="number" id="city-avg" name="cityAvg">
+
+            <button>Submit</button>
+        </fieldset>
+    </form>
     <main>
 
 
