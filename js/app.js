@@ -10,6 +10,7 @@ let tableElement = document.createElement('table');
 let tbodyElement = document.createElement('tbody'); // used to be within the render function, moving it outside of render created a single tbody tag
 tableElement.appendChild(tbodyElement);
 
+
 //taken from MDN to return random integer, inclusive range
 function estimateNumberOfCustomers(min,max){
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -37,17 +38,6 @@ City.prototype.estimateCookieSales = function(){
 
   }
 };
-
-// display cities as headers
-// function displayCities(){
-//   for(let i = 0; i <cities.length; i++){
-//     let trHead = document.createElement('tr');
-//     tableElement.appendChild(trHead);
-//     let thHead = document.createElement('th');
-//     trHead.appendChild(thHead);
-//     thHead.textContent = cities[i].city;
-//   }
-// }
 
 //thead table function
 function displayHeader(){
@@ -107,6 +97,49 @@ function calculateHourlyTotals(){
   }
 }
 
+let newCityForm = document.getElementById('add-new-location'); // this grabs a element in the DOM, giving us access to manipulate the DOM
+
+//event handler
+function handleSubmit(event){
+  event.preventDefault();
+  console.log(event);
+
+  let cityName = event.target.cityName.value;
+  let cityMin = +event.target.cityMin.value;
+  let cityMax = +event.target.cityMax.value;
+  let cityAvg = +event.target.cityAvg.value;
+
+  let newCity = new City(cityName, cityMin, cityMax, cityAvg);
+  console.log(newCity);
+
+  cities.push(newCity);
+
+  newCity.estimateCookieSales();
+  newCity.render();
+
+  // totalsPerHour.push(newCity.cookiesPerHour);
+  let newHourlyCookies = cities[cities.length-1].cookiesPerHour;
+  console.log('new cookies', newHourlyCookies);
+
+  for(let i = 0; i < newHourlyCookies.length; i++){
+    for(let j = 0; j < totalsPerHour.length; j++)
+    // totalsPerHour[j] += newHourlyCookies[i];
+      newHourlyCookies[j] += totalsPerHour[i];
+  }
+  console.log(newHourlyCookies);
+  
+
+  // let newCitySum = 0;
+  // for(let i = 0; i < newHourlyCookies.length; i++){
+  //   newCitySum += newHourlyCookies[i];
+  //   console.log('new city sum', newCitySum);
+  // } 
+  // console.log(newCity.cookiesPerhour);
+  // totalsPerHour.push(newCitySum);
+  // // calculateHourlyTotals();
+  displayFooter();
+}
+
 // tfoot function displays hourly totals
 function displayFooter(){
   let tableFooter = document.createElement('tfoot');
@@ -158,7 +191,10 @@ paris.render();
 lima.estimateCookieSales();
 lima.render();
 
+//event listener for submit
+newCityForm.addEventListener('submit', handleSubmit);
+
 calculateHourlyTotals();
-displayFooter();
+// displayFooter();
 
 // displayCities();
