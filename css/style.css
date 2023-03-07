@@ -31,8 +31,8 @@ h2 {
     font-size: 20px
 }
 img{
-    flex-direction: column;
-    block-size: 100px;
+    border-radius: 25px;
+    block-size: 75px;
 }
 li{
     display: block;
@@ -76,12 +76,14 @@ ul{
 
 }
 #cookies{
-    margin: 20px;
-    block-size: 200px;
+    block-size: 100px;
+    margin-top: 15px;
+    float: left;
+    padding: 0 8px 8px 0;
 } 
 #family{
     margin: 25px;
-    block-size: 250px;
+    block-size: 275px;
 }
 #locations-list{
     position: relative;
