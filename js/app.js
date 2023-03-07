@@ -1,15 +1,14 @@
-//branch class07-tables
+//branch class09-form
 
 //global variables
 let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let cities = [];
 
 //WINDOW into the DOM
-let container = document.getElementById('sales-table'); //this is the parent
+let container = document.getElementById('sales-figure'); //this is the parent
 let tableElement = document.createElement('table');
 let tbodyElement = document.createElement('tbody'); // used to be within the render function, moving it outside of render created a single tbody tag
 tableElement.appendChild(tbodyElement);
-
 
 //taken from MDN to return random integer, inclusive range
 function estimateNumberOfCustomers(min,max){
@@ -22,8 +21,9 @@ function City(city, minNumberOfCustomers, maxNumberOfCustomers, avgSales){
   this.minNumberOfCustomers = minNumberOfCustomers;
   this.maxNumberOfCustomers = maxNumberOfCustomers;
   this.avgSales = avgSales;
+  this.render(); //new from DEMO 3-6
 
-  cities.push(this);
+  // cities.push(this);
 }
 
 //this is a method within City
@@ -64,6 +64,7 @@ function displayHeader(){
 
 //tbody table render
 City.prototype.render = function(){
+  this.estimateCookieSales(); //from demo 3-6
   let tableRow = document.createElement('tr');
   tbodyElement.appendChild(tableRow);
 
@@ -85,18 +86,6 @@ City.prototype.render = function(){
 
 };
 
-let totalsPerHour = [];
-
-function calculateHourlyTotals(){
-  for(let i = 0; i < hours.length; i++){
-    let columnTotal = 0;
-    for(let j = 0; j < cities.length; j++){
-      columnTotal += cities[j].cookiesPerHour[i];
-    }
-    totalsPerHour.push(columnTotal); //when I had this within the above inner loop, totalsPerHour.length = hours.length * cookiesPerHour.length YIKES
-  }
-}
-
 let newCityForm = document.getElementById('add-new-location'); // this grabs a element in the DOM, giving us access to manipulate the DOM
 
 //event handler
@@ -110,38 +99,48 @@ function handleSubmit(event){
   let cityAvg = +event.target.cityAvg.value;
 
   let newCity = new City(cityName, cityMin, cityMax, cityAvg);
-  console.log(newCity);
 
   cities.push(newCity);
 
-  newCity.estimateCookieSales();
-  newCity.render();
+  document.querySelector('tfoot').remove();
+  displayFooter();
+
+  // newCity.estimateCookieSales();
+  // newCity.render();
 
   // totalsPerHour.push(newCity.cookiesPerHour);
-  let newHourlyCookies = cities[cities.length-1].cookiesPerHour;
-  console.log('new cookies', newHourlyCookies);
+  // let newHourlyCookies = cities[cities.length-1].cookiesPerHour;
+  // console.log('new cookies', newHourlyCookies);
 
-  for(let i = 0; i < newHourlyCookies.length; i++){
-    for(let j = 0; j < totalsPerHour.length; j++)
-    // totalsPerHour[j] += newHourlyCookies[i];
-      newHourlyCookies[j] += totalsPerHour[i];
-  }
-  console.log(newHourlyCookies);
+  // for(let i = 0; i < newHourlyCookies.length; i++){
+  //   for(let j = 0; j < totalsPerHour.length; j++)
+  //   // totalsPerHour[j] += newHourlyCookies[i];
+  //     newHourlyCookies[j] += totalsPerHour[i];
+  // }
+  // console.log(newHourlyCookies);
   
-
   // let newCitySum = 0;
   // for(let i = 0; i < newHourlyCookies.length; i++){
-  //   newCitySum += newHourlyCookies[i];
-  //   console.log('new city sum', newCitySum);
-  // } 
-  // console.log(newCity.cookiesPerhour);
+    //   newCitySum += newHourlyCookies[i];
+    //   console.log('new city sum', newCitySum);
+    // } 
+    // console.log(newCity.cookiesPerhour);
   // totalsPerHour.push(newCitySum);
   // // calculateHourlyTotals();
-  displayFooter();
+  // displayFooter();
 }
 
 // tfoot function displays hourly totals
 function displayFooter(){
+  let totalsPerHour = [];
+  for(let i = 0; i < hours.length; i++){
+    let columnTotal = 0;
+    for(let j = 0; j < cities.length; j++){
+      columnTotal += cities[j].cookiesPerHour[i];
+    }
+    totalsPerHour.push(columnTotal); //when I had this within the above inner loop, totalsPerHour.length = hours.length * cookiesPerHour.length YIKES
+  }
+
   let tableFooter = document.createElement('tfoot');
   tableElement.appendChild(tableFooter);
   let tableRowFooter = document.createElement('tr');
@@ -171,30 +170,12 @@ let tokyo = new City('Tokyo', 3, 24, 1.2);
 let dubai = new City('Dubai', 11, 38, 3.7);
 let paris = new City('Paris', 20, 38, 2.3);
 let lima = new City('Lima', 2, 16, 4.6);
-
+cities.push(seattle, tokyo, dubai, paris, lima); //new from demo, unsure why it is needed since this exists in the constructor class
 
 //this calls the methods
 displayHeader();
-
-seattle.estimateCookieSales();
-seattle.render();
-
-tokyo.estimateCookieSales();
-tokyo.render();
-
-dubai.estimateCookieSales();
-dubai.render();
-
-paris.estimateCookieSales();
-paris.render();
-
-lima.estimateCookieSales();
-lima.render();
+displayFooter();
 
 //event listener for submit
 newCityForm.addEventListener('submit', handleSubmit);
 
-calculateHourlyTotals();
-// displayFooter();
-
-// displayCities();
