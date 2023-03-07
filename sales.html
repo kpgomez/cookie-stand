@@ -20,40 +20,45 @@
     <nav>
         <a href="index.html">Return to Home</a>
     </nav>
-    <h2>Estimated Cookie Sales</h2><br>
-    <!--ideal table structure-->
-    <table id="sales-table">
-   <!--<thead>
-            <tr>
-                <th>loops through the hours</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th> loops through cities.this.city</th>
-                <td> loops through the cookies per hour for each city</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td> loops through the cookies per hour for each city and sums it up for all cities by the hour </td>
-            </tr>
-        </tfoot> -->
-    </table>
+    <figure>
+        <figcaption>
+            <h2>Estimated Cookie Sales</h2><br>
+        </figcaption>
+        <table id="sales-table">
+        <!--ideal table structure-->
+        <!--<thead>
+               <tr>
+                   <th>loops through the hours</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                   <th> loops through cities.this.city</th>
+                   <td> loops through the cookies per hour for each city</td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                   <td> loops through the cookies per hour for each city and sums it up for all cities by the hour </td>
+               </tr>
+            </tfoot> -->
+        </table>
+   </figure>
     <form id="add-new-location"> <!--this is the form container-->
         <fieldset>
+            <!-- <legend>Test</legend> -->
             <label for="city-name">City Name</label>
-            <input type="text" id="city-name" name="cityName">
+            <input type="text" id="city-name" name="cityName"><br>
 
-            <legend>Statistics</legend>
-            <label for="city-min">Minimum # of Customers</label>
-            <input type="number" id="city-min" name="cityMin">
+            <!-- <legend>Statistics</legend> -->
+            <label for="city-min">MIN # of Customers</label>
+            <input type="number" id="city-min" name="cityMin"><br>
 
-            <label for="city-max">Maximum # of Customers</label>
-            <input type="number" id="city-max" name="cityMax">
+            <label for="city-max">MAX # of Customers</label>
+            <input type="number" id="city-max" name="cityMax"><br>
 
-            <label for="city-avg">Average # of Cookies per Customer</label>
-            <input type="number" id="city-avg" name="cityAvg">
+            <label for="city-avg">AVG # Cookies/Customer</label>
+            <input type="number" id="city-avg" name="cityAvg"><br>
 
             <button>Submit</button>
         </fieldset>
