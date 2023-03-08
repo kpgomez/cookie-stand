@@ -15,11 +15,13 @@ figure{
 form{
     margin: 0 auto;
     display: flex;
-    border: solid blue 3.5px;
+
+    background-color: lightgray;
+    border: ridge gray 3.5px;
     padding: 10px;
-    max-block-size: 160px;
+    min-block-size: auto;
     height: 55%;
-    width: 55%;
+    width: 30%;
     justify-items: center;
 }
 h1 {
@@ -37,10 +39,12 @@ h2{
 input{
     float: right;
     border: solid blue 1px;
-    margin: 8px;
+    margin: 7px;
     width: 25%;
+    align-self: flex-end;
 }
 label{
+    align-self: flex-start;
     margin: 8px;
     float: left;
 }
