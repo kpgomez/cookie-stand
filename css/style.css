@@ -11,6 +11,7 @@ body {
     text-align: center;
     font-family:Georgia, 'Times New Roman', Times, serif;
     line-height: 1.75;
+    width: 90%;
 }
 header {
     /* background-color: #f4f1de; */
@@ -32,7 +33,7 @@ h2 {
 }
 img{
     border-radius: 25px;
-    block-size: 75px;
+    block-size: 55px;
 }
 li{
     display: block;
