@@ -1,26 +1,23 @@
-* {
-    color: maroon;
-    margin: 5px;
-    /* border: 5px red solid; */
-}
 a{
     margin: 20px;
 }
 body {
     background-color: #f4f1de;
+    color: maroon;
     text-align: center;
     font-family:Georgia, 'Times New Roman', Times, serif;
     line-height: 1.75;
     width: 90%;
+    float: auto;
+    margin: 50px;
 }
 header {
-    /* background-color: #f4f1de; */
     background-color: white;
     width: 90%;
     height: 90%;
-    float: auto;
     border: thick double maroon;
-    margin: 0 auto;
+    margin: 0 auto; /* 0 refers to margin-top and margin-bottom, auto is for left and right */
+    margin-top: 50px;
 }
 h1, h2 {
     font-family: 'Yanone Kaffeesatz', sans-serif; /* custom sans-serif Google font*/
