@@ -27,7 +27,7 @@ References
 
 ### Lighthouse Accessibility Report Score
 
-![Lighthouse Accessibility Report](./img/Screenshot%202023-03-07%20at%2012.56.00%20AM.png)
+![Lighthouse Accessibility Report](./img/Screenshot%202023-03-10%20at%2012.24.48%20AM.png)
 
 ### Reflections and Comments
 
