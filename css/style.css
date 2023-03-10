@@ -24,20 +24,19 @@ h1, h2 {
     color: #e07a5f;
     font-size: 100px;
     text-align: center;
+    margin-top: 0;
 }
 h2 {
     font-size: 20px
 }
 img{
-    border-radius: 25px;
-    block-size: 55px;
+    border-radius: 8px;
 }
 li{
     display: block;
     width: 100%;
     margin: 10px;
 }
-
 main{
     display: flex;
     background-color: white;
@@ -48,16 +47,31 @@ main{
     border: thick double maroon;
     /* overflow: auto; */
 }
-
 p {
     margin: 20px 20px;
+}
+table, td, th{
+    /* border: 2px maroon solid; */
+    background-color: rgb(249, 197, 151) ;
+    color: white;
+    font-size: 16px;
+    margin: 0 auto;
+}
+table, td, th, #misc, #locations-list{
+    border: 2px maroon solid;
 }
 ul{
     margin: 50px;
 }
+.bold{
+    font-weight: bold;
+}
 .emphasized {
     font-weight: bold;
     font-size: 20px;
+}
+.italic{
+    font-style: italic;
 }
 /* #about-us{
     /* display: flex; */
@@ -71,58 +85,46 @@ ul{
     height: auto;
     width: 600px;
     text-align: center;
-
+}
+#chinook {
+    block-size: 75px;
 }
 #cookies{
     block-size: 100px;
     margin-top: 15px;
     float: left;
     padding: 0 8px 8px 0;
-} 
+}
+#custcookie{
+    block-size: 75px;
+    margin-top: 25px;
+}
+#cutter{
+    block-size: 100px;
+    margin-top: 25px;
+}
 #family{
     margin: 25px;
-    block-size: 275px;
+    block-size: 300px;
 }
 #locations-list{
     position: relative;
     margin: 20px;
     width: 20%;
     padding: 10px;
-    border: solid maroon 2px;
+    /* border: solid maroon 2px; */
 }
 #logo {
     block-size: 100px;
+    margin-top: 25px;
 }
 #misc{
     position: relative;
     margin: 20px;
     width: 20%;
     padding: 10px;
-    border: solid maroon 2px;
+    /* border: solid maroon 2px; */
 }
-/*
-
-stretch goals for later
-1. custom sans-serif Google Font for use in the heading tags
-2. sans-serif web font for sales data such as Arial, Verdana, or Helvetica
-3. serif web font for text such as Georgia, Times
-4. specified different font colors for all three fonts uses
-5. a background color for the default page that has good contrast and are readable
-6. different background color for the elements such as boxes and tables
-7. style: simplicity, clarity, consistency
-8. thoughtful layout and overall organization
-9. lighthouse accessibility report between 65-80 into readme.md 
-10. normal home page info; locations, hours, contact information, some text about how awesome
-the business is . think about audience
-
-
-
-
-
-
-
-
-
-
-
-*/
+#t-shirt {
+    block-size: 100px;
+}
