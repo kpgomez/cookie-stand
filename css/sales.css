@@ -17,7 +17,7 @@ form{
     display: flex;
 
     background-color: lightgray;
-    border: ridge gray 3.5px;
+    border: ridge darkgray 3.5px;
     padding: 10px;
     min-block-size: auto;
     height: 55%;
@@ -25,7 +25,7 @@ form{
     justify-items: center;
 }
 h1 {
-    font-family: 'Gidugu', cursive;
+    font-family: 'Gidugu', cursive; /* another custom google font */
     color: green;
     font-size: 125px;
     text-align: center;
@@ -38,7 +38,7 @@ h2{
 }
 input{
     float: right;
-    border: solid blue 1px;
+    border: solid darkgray 2px;
     margin: 7px;
     width: 25%;
     align-self: flex-end;
